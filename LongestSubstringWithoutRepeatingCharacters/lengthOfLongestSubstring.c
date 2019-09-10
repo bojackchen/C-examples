@@ -7,12 +7,12 @@ int lengthOfLongestSubstring(char* s) {
   if (s[0] == 0)
     return 0;
 
-  while (ptr2 != s + strlen(s)) {
+  while (ptr2[0] != '\0') {
     for (int i = 0; i < ptr2 - ptr1; i++) {
       if (*ptr2 == ptr1[i]) {
         length = (ptr2 - ptr1 > length) ? (ptr2 - ptr1) : length;
         // shrink the sliding window by 1 by moving ptr1 forward by 1
-        ptr1 = ptr1 + 1;
+        ptr1 = ptr1 + i + 1;
         // this is to cancel the next statement so that ptr2 does not move
         ptr2 = ptr2 - 1;
       }
